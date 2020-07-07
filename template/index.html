@@ -5,6 +5,12 @@
     <title>Hedge Pensions Trust</title>
     <link rel="stylesheet" href="static/bootstrap.min.css">
     <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            user-select: none;
+            position: relative;
+        }
         /* Navbar Section */
         nav{
             box-shadow: 0px 2px 5px rgba(0,0,0,.5);
@@ -30,18 +36,32 @@
         nav ul li{
             display: inline-block;
             margin: auto;
-            max-width: 140px;
+            max-width: 180px;
+            min-width: 100px;
         }
-        nav ul li a{
+        nav ul li a, nav ul li span{
             display: block;
 /*            background: lime;*/
             padding:16px;
             color: #535353;
             text-align: center;
         }
-        nav ul li a:hover{
+        nav ul li a:hover, nav ul li span:hover{
             text-decoration:none;
             color: #f5a207;
+        }
+        nav ul li.dropdown{
+            position: relative;
+        }
+        nav ul li.dropdown:hover{
+            border-radius: 5px 5px 0px 0px;
+            border: thin solid rgba(0,0,0,.125);
+            border-bottom: none;
+        }
+        nav ul li.dropdown:hover > ul{
+            opacity: 1;
+            visibility: visible;
+            top: 60px;
         }
         /* Special Nav Items */
         .special-nav-item::after{
@@ -63,32 +83,249 @@
         .submenu{
             margin: auto;
             padding: 0px;
+            opacity:0;
+            visibility: hidden;
+            position: absolute;
+            transition: all .2s ease-in-out;
+            top: 80px;
+            border: thin solid rgba(0,0,0,.125);
+            border-top: none;
+            border-radius: 0px 0px 5px 5px;
+            width: 180%;
+        }
+        nav ul li.dropdown ul li{
+            width: 140%;
+            display: block;
+        }
+        nav ul li.dropdown ul li a{
+            padding: 10px 0px;
+            line-height: 15px;
+            border-bottom: thin solid rgba(0,0,0,.125);
+        }
+        nav ul li.dropdown ul li a:last-child{
+            border: none;
+        }
+        /* Hamburger menu */
+        #hamburger{
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            cursor: pointer;
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .2s ease-in-out;
+        }
+        #hamburger p{
+            width: 40px;
+            height: 5px;
+            background: #f5a207;
+            border-radius: 10px;
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            transition: all .1s ease-in-out;
+        }
+        #hamburger p::after, #hamburger p::before{
+            display: block;
+            content: '';
+            width: 40px;
+            height: 5px;
+            top: -10px;
+            background: #f5a207;
+            position: absolute;
+            transition: all .2s ease-in-out;
+            border-radius: 10px;
+
+        }
+        #hamburger p:after{
+            top: 10px;
+        }
+        #hamburger #burger-row{
+            background: transparent;
+            box-shadow: 0px 2px 5px transparent;
+        }
+        #hamburger #burger-row::after{
+            top: 0px;
+            transform: rotate(45deg);
+        }
+        #hamburger #burger-row::before{
+            top: 0px;
+            transform: rotate(135deg);
+        }
+        /* Slider for smaller screens */
+        #slider{
+            position: absolute;
+            top: 80px;
+            right: 1500px;
+            background: rgba(0,0,0,.5);
+            width: 100vw;
+            height: calc(100vh - 80px);
+            transition: all .2s ease-in-out;
+            display: grid;
+            grid-template-columns: 1fr 200px;
+        }
+        /* Alternate Close */
+        #alternate-close{
+            width: 100%;
+            height: 100vh;
+            background: transparent;
+        }
+        /* Slider Menu Container */
+        #slider #slider-menu-container{
+            background: white;
+            height: 100%;
+            overflow-y: scroll;
         } 
-        .submenu
+        /* Slider Menu */
+        #slider #slider-menu-container ul{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+        /* Slider Menu Items */
+        #slider #slider-menu-container ul li a,#slider #slider-menu-container ul li span{
+            display: block;
+            padding: 10px 5px;
+            color: #535353;
+            border-bottom: thin solid rgba(0,0,0,.125);
+            font-size: 15px;
+            
+        }
+        #slider #slider-menu-container ul li span code{
+            float: right;
+            color: #535353;
+        }
+        #slider #slider-menu-container ul li span:hover > code{
+            color: #f5a207;
+        }
+        #slider #slider-menu-container ul li a:hover,#slider #slider-menu-container ul li span:hover{
+            color: #f5a207;
+            text-decoration: none;
+        }
+        #slider #slider-menu-container ul li{
+            height: 43px;
+            overflow: hidden;
+            transition: all .2s ease-in-out;
+        }
+        /* Slider Submenu */
+        #slider #slider-menu-container ul li ul{
+            background: rgba(0,0,0,.125);
+        }
+        /* Slider Submenu Items */
+        #slider #slider-menu-container ul li ul li{
+            height: auto;
+            text-align: center;
+        }
+        /* Media Query from 0px to 1125px */
+        @media only screen and (max-width: 1125px){
+            nav ul{
+                display: none;
+            }
+            #hamburger{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
     </style>
 </head>
 <body>
+  <!-- Hamburger Menu -->
+   <div id="hamburger"><p></p></div>
+   <!-- Side menu for smaller screens -->
+   <div id="slider">
+       <div id="alternate-close"></div>
+       <div id="slider-menu-container">
+           <ul>
+               <li><a href="">Home</a></li>
+               <li class="slider-dropdown">
+                   <span>What We Do  <code>&#11206;</code></span>
+                   <ul>
+                       <li><a href="">Provident Fund Management</a></li>
+                       <li><a href="">Administrative Services</a></li>
+                       <li><a href="">Investment Returns</a></li>
+                       <li><a href="">Retirement Planning</a></li>
+                       <li><a href="">Personal Pensions</a></li>
+                       <li><a href="">Corperate Pensions</a></li>
+                   </ul>
+                </li>
+                <li class="slider-dropdown">
+                    <span>Portal <code>&#11206;</code></span>
+                    <ul>
+                        <li><a href="">Member Portal</a></li>
+                        <li><a href="">Employer Portal</a></li>
+                    </ul>
+                </li>
+                <li class="slider-dropdown">
+                    <span>Download <code>&#11206;</code></span>
+                    <ul>
+                        <li><a href="">Claim Form</a></li>
+                        <li><a href="">Survivor's Claim Form</a></li>
+                        <li><a href="">Tier 2 Enrollement Form</a></li>
+                        <li><a href="">Tier 3 Enrollement Form</a></li>
+                    </ul>
+                </li>
+                <li class="slider-dropdown">
+                    <span>About Us <code>&#11206;</code></span>
+                    <ul>
+                        <li><a href="">Who We Are</a></li>
+                        <li><a href="">FAQ</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">Regional Branches</a></li>
+                <li><a href="">Help</a></li>
+           </ul>
+       </div>
+   </div>
     <div id="container">
         <div id="navbar-container">
+           <!-- Nav bar -->
             <nav>
+               <!-- Nav Image -->
                 <img src="static\images\logo.png" alt="">
+                <!-- Main Menu -->
                 <ul>
                     <li class="special-nav-item" ><a href="">Home</a></li>
-                    <li>
-                        <a href="">What We Do</a>
-<!--
+                    <li class="dropdown">
+                        <span>What We Do  &#11206;</span>
+                        <!-- Submenu -->
                         <ul class="submenu">
-                            <li><a href="">Cook</a></li>
-                            <li><a href="">Eat</a></li>
-                            <li><a href="">Dance</a></li>
-                            <li><a href="">Code</a></li>
+                            <li><a href="">Provident Fund Management</a></li>
+                            <li><a href="">Administrative Services</a></li>
+                            <li><a href="">Investment Returns</a></li>
+                            <li><a href="">Retirement Planning</a></li>
+                            <li><a href="">Personal Pensions</a></li>
+                            <li><a href="">Corperate Pensions Pensions</a></li>
                         </ul>
--->
                     </li>
-                    <li><a href="">Portal</a></li>
-                    <li><a href="">Download</a></li>
-                    <li><a href="">About Us</a></li>
+                    <li class="dropdown">
+                        <span>Portal  &#11206;</span>
+                        <ul class="submenu">
+                            <li><a href="">Member Portal</a></li>
+                            <li><a href="">Employer Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class = 'dropdown' >
+                        <span>Download  &#11206;</span>
+                        <ul class="submenu">
+                            <li><a href="">Claim Form</a></li>
+                            <li><a href="">Survivors Claim Form</a></li>
+                            <li><a href="">Tier 2 Enrollement Form</a></li>
+                            <li><a href="">Tier 3 Enrollement Form</a></li>
+                        </ul>
+                    </li>
+                    <li class = 'dropdown' >
+                        <span>About Us  &#11206;</span>
+                        <ul class="submenu">
+                            <li><a href="">Who We Are</a></li>
+                            <li><a href="">FAQ</a></li>
+                        </ul>
+                    </li>
                     <li class="special-nav-item" ><a href="">Contact</a></li>
+                    <li class="special-nav-item" ><a href="">Regional Branches</a></li>
                     <li class="special-nav-item" ><a href="">Help</a></li>
                 </ul>
             </nav>
@@ -96,5 +333,6 @@
     </div>
     <script src="static/jquery-3.5.1.min.js"></script>
 <!--    <script src="static/jquery-3.5.1.min.js"></script>-->
+    <script src="static/index.js"></script>
 </body>
 </html>
