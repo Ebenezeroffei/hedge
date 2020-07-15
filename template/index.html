@@ -224,9 +224,20 @@
             text-align: center;
         }
         
+        /* Why us */
+        #why-us-items-container{
+            text-align: center;
+        }
+        
+        #why-us-items-container > div{
+            max-width: 200px;
+            display: inline-block;
+            margin: 20px;
+        }
+        
         /* Footer */
         footer{
-            background-color:#f59607;
+            background-color:#535353;
         }
         footer img{
             margin-top: 10px;
@@ -260,6 +271,11 @@
         #what-we-do img{
             max-width: 400px;
             height: auto;
+        }
+        
+        /* Out Team */
+        #our-team div.card img{
+            border: thick solid rgba(245,79,7,.6);
         }
         
         /* Media Query from 0px to 1125px */
@@ -376,13 +392,13 @@
         <div class="container-fluid">
             <!-- What We Do -->
             <div id="what-we-do" class="mt-3 mb-3">
-               <h3 class="ml-5" style="color: #f5a207;">What We Do</h3><hr/>
+               <h3 class="text-center"style="color: #f5a207;font-family: cursive;">What We Do</h3><hr style = 'background: #f5a207;'/>
                 <div class="row justify-items-center">
-                    <div class="col-sm-4 ">
-                        <div class="card h-100 text-light" style = 'background: #f5a207; max-width: 350px;margin: auto;'>
-                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">
+                    <div class="col-12 col-sm-4">
+                        <div class="card h-100 text-light" style = 'background: #f5a207;margin: auto;'>
+<!--                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">-->
                             <div class="card-body">
-                                <h5 class="card-title">Personal Pensions Scheme</h5>
+                                <h4 class="card-title text-center">Personal Pensions Scheme</h4><hr class = 'bg-light'/>
                                 <p>
                                     Our personal pension schemes and micro pensions are structured to address the investment needs of self employed persons in the formal and informal sectors respectively who desire to save towards their retirement in a disciplined way.
                                 </p>
@@ -390,11 +406,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 mt-4 mt-sm-0">
-                        <div class="card h-100 text-light" style = 'background: #f5a207; max-width: 350px;margin: auto;'>
-                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">
+                    <div class="col-12 col-sm-4 mt-4 mt-sm-0">
+                        <div class="card h-100 text-light" style = 'background: #f5a207;margin: auto;'>
+<!--                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">-->
                             <div class="card-body">
-                                <h5 class="card-title">Retirement Planning</h5>
+                                <h4 class="card-title text-center">Retirement Planning</h4><hr class="bg-light"/>
                                 <p>
                                     Planning for your retirement can be nerve-racking as you approach retirement, and can still be a minefield for those people who start planning for retirement early. As the Pensions Expert, Hedge makes planning for your retirement a breeze.
                                 </p>
@@ -402,11 +418,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 mt-4 mt-sm-0">
-                        <div class="card h-100 text-light" style = 'background: #f5a207; max-width: 350px;margin: auto;'>
-                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">
+                    <div class="col-12 col-sm-4 mt-4 mt-sm-0">
+                        <div class="card h-100 text-light" style = 'background: #f5a207;margin: auto;'>
+<!--                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">-->
                             <div class="card-body">
-                                <h5 class="card-title">Corperate Pensions</h5>
+                                <h4 class="card-title text-center">Corperate Pensions</h4><hr class="bg-light"/>
                                 <p>
                                     Pension Schemes have become an integral part of employee benefits package as enshrined in Act 766. A pension scheme provides a firm a competitive edge in attracting and retaining highly skilled employees. Our master-trust pension schemes
                                 </p>
@@ -414,11 +430,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 mt-4">
-                        <div class="card h-100 text-light" style = 'background: #f5a207; max-width: 350px;margin: auto;'>
-                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">
+                    <div class="col-12 col-sm-6 mt-4">
+                        <div class="card h-100 text-light" style = 'background: #f5a207;margin: auto;'>
+<!--                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">-->
                             <div class="card-body">
-                                <h5 class="card-title">Investment Returns</h5>
+                                <h4 class="card-title text-center">Investment Returns</h4><hr class="bg-light"/>
                                 <p>
                                     Pension Schemes have become an integral part of employee benefits package as enshrined in Act 766. A pension scheme provides a firm a competitive edge in attracting and retaining highly skilled employees. Our master-trust pension schemes
                                 </p>
@@ -426,39 +442,233 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-4 mt-4">
-                        <div class="card h-100 text-light" style = 'background: #f5a207; max-width: 350px;margin: auto;'>
-                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">
+                    <div class="col-12 col-sm-6 mt-4">
+                        <div class="card h-100 text-light" style = 'background: #f5a207;margin: auto;'>
+<!--                            <img class = 'border-bottom' width="100%" height="auto" src="static/images/logo.png" alt="">-->
                             <div class="card-body">
-                                <h5 class="card-title">Provident Fund Management</h5>
+                                <h4 class="card-title text-center">Provident Fund Management</h4><hr class="bg-light"/>
                                 <p>
                                     Pension Schemes have become an integral part of employee benefits package as enshrined in Act 766. A pension scheme provides a firm a competitive edge in attracting and retaining highly skilled employees. Our master-trust pension schemes
                                 </p>
                                 <a href="" class="btn btn-sm btn-dark"><< Read More >></a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4 mt-4" style = 'color:#f5a207'>
-                        <h4 class="text-center">Mission</h4><hr/>
-                        <p class="text-dark">
-                            To achieve operational excellence, superior financial performance, first class customer satisfaction and secured pension income.
-                        </p>
-                        <h4 class="text-center">Vision</h4><hr/>
-                        <p class="text-dark">
-                            Hedge Pensions Trust exist to provide adequate and dignified retirement package to each member through safe, prudent and strategic investment policies
-                        </p>
-                        <h4 class="text-center">About Us</h4><hr/>
-                       <p class="text-dark">
-                          Hedge Pensions Trust (HPT) is a company established to offer short term and long term financial and investment planning services for the staff of the Civil Service and the Local Government Service of Ghana (CLOGSAG).<br/>
-                          Hedge Pensions Trust competence hinges on:Confidentiality, which is one of the most important aspect of the total services the company offers. We guarantee the privacy of three essential key components<br/>
-                           <a href="" class="btn btn-dark btn-sm mt-1"><< Read More >></a>
-                       </p>
                     </div>
                 </div>
             </div>
-            <!-- Why Us -->
-            <div id="why-us">
-                <h3 class="ml-5" style = 'color: #f5a207'>Why Us</h3><hr/>
+        </div>
+        <!-- About Us, Mission and Vision -->
+        <div class = 'row mt-4 no-gutters' style="background: #f5a207;padding: 10px;">
+           <!-- About Us -->
+            <div class="col-12 col-sm-6 p-4" style="border-right: thin solid white;">
+                <h3 class="text-center text-light" style="font-family: cursive;">About Us</h3><hr class = 'bg-light'/>
+                <p class="text-light">
+                    Hedge Pensions Trust (HPT) is a company established to offer short term and long term financial and investment planning services for the staff of the Civil Service and the Local Government Service of Ghana (CLOGSAG).<br/>HPT’s competence hinges on:Confidentiality, which is one of the most important aspect of the total services the company offers. We guarantee the privacy of three essential key components.<br/>
+                    <a href="" class="btn btn-dark btn-sm mt-3"><< Read More >></a>
+                </p>
+            </div>
+            <!-- Mission and Vision -->
+            <div class="col-12 col-sm-6">
+              <div class="row no-gutters p-4">
+                  <!-- Mission -->
+                    <div class="col-12">
+                        <h3 class = 'text-center text-light' style = 'font-family:cursive;'>Mission</h3><hr class = 'bg-light'/>
+                        <p class="text-light">
+                            To achieve operational excellence, superior financial performance, first class customer satisfaction and secured pension income.
+                        </p>
+                    </div>
+                    <!-- Vision -->
+                    <div class="col-12">
+                        <h3 class = 'text-center text-light' style = 'font-family:cursive;'>Vision</h3><hr class = 'bg-light'/>
+                        <p class="text-light">
+                            Hedge Pensions Trust exist to provide adequate and dignified retirement package to each member through safe, prudent and strategic investment policies
+                        </p>
+                    </div>
+              </div>
+            </div>
+        </div>
+        <!-- Our Team -->
+        <div id="our-team" class="mt-4">
+           <h3 class="text-center" style = 'font-family: cursive;color: #f5a207;'>Our Team</h3><hr style="background: #f5a207"/>
+            <div class="row no-gutters p-4">
+               <!-- CEO -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style = 'border-color: transparent'>
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Assistant CEO -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager 1 -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager 2 -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager 3 -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager 4 -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager 5 -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Manager 6 -->
+                <div class="col-12 col-sm-6">
+                    <div class="card p-1 h-100" style="border-color: transparent;">
+                        <div class="row no-gutters">
+                           <!-- Team Member Image -->
+                            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                <img src="static/images/user.png" style="background: lime; max-width: 150px;" class="rounded-circle p-1" alt="">
+                            </div>
+                            <!-- Team Member Info -->
+                            <div class="col-md-8 p-4" >
+                                <h5 style="color: #f5a207;" class="text-center">Prof. Emmanuel Essiamah Osei</h5>
+                                <p class="text-muted text-center small">CHIEF EXECUTIVE OFFICER (CEO)</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet malesuada feugiat.Curabitur fermentum bibendum nulla, non dictum ipsum tincidunt non. Quisque convallis pharetra tempor. Donec id pretium leo. Pellentesque luctus massa non elit viverra pellentesque. Cras vitae neque molestie, rhoncus ipsum sit amet, lobortis dui. Fusce in urna sem. Vivamus vehicula dignissim augue et scelerisque. Etiam quam nisi, molestie ac dolor in, tincidunt tincidunt arcu. Praesent sed justo finibus, fringilla velit quis, porta erat. Donec blandit metus ut arcu iaculis iaculis. Cras nec dolor fringilla justo ullamcorper auctor. Aliquam eget pretium velit. Morbi urna justo, pulvinar id lobortis in, aliquet placerat orci.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Why Us -->
+        <div id="why-us" style="background: #f5a207" class="mt-4">
+            <h3 style = 'color: white;font-family: cursive;' class="text-center">Why Us?</h3><hr class = 'bg-light'/>
+            <div id = 'why-us-items-container'>
+                <div>
+                    <img src="static/images/1_39.png" alt="">
+                    <p class="text-light text-center">Excellent Customer Service</p>
+                </div>
+                <div>
+                    <img src="static/images/5_39.png" alt="">
+                    <p class="text-light text-center">Over 6000 Beneficiaries</p>
+                </div>
+                <div>
+                    <img src="static/images/4_39.png" alt="">
+                    <p class="text-light text-center">One Time Payment</p>
+                </div>
+                <div>
+                    <img src="static/images/2_39.png" alt="">
+                    <p class="text-light text-center">Experienced Staff</p>
+                </div>
+                <div>
+                    <img src="static/images/3_39.png" alt="">
+                    <p class="text-light text-center">24/7 Support</p>
+                </div>
             </div>
         </div>
         <!-- Footer -->
