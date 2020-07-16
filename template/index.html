@@ -234,6 +234,11 @@
             display: inline-block;
             margin: 20px;
         }
+        /* Regional Branches */
+        #regional-branches #map{
+            width: 100%;
+            height: 100%;
+        }
         
         /* Footer */
         footer{
@@ -645,6 +650,32 @@
                 </div>
             </div>
         </div>
+        <!-- Regional Branches -->
+        <div id="regional-branches">
+           <h3 class="text-center" style="color:#f5a207;font-family: cursive;">Regional Branches</h3><hr style = '#f5a207'/>
+            <div class="row no-gutters p-2">
+               <!-- Regional Branches List -->
+                <div class="col-12 col-sm-4 col-md-3 col-lg-2">
+                     <ul class="list-group">
+                        <li class = 'text-center list-group-item list-group-item-action  active'>Greater Accra Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Ashanti Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Brong Ahafo Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Central Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Eastern Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Northern Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Upper East Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Upper West Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Western Region</li>
+                        <li class = 'text-center list-group-item list-group-item-action '>Volta Region</li>
+                    </ul>                      
+                </div>
+                <!-- Google Map showing the direction -->
+                <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+                    <div id="map">
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Why Us -->
         <div id="why-us" style="background: #f5a207" class="mt-4">
             <h3 style = 'color: white;font-family: cursive;' class="text-center">Why Us?</h3><hr class = 'bg-light'/>
@@ -727,6 +758,21 @@
             </footer>
         </div>
     </div>
+    <script>
+        // A function that displays the map
+        function initMap() {
+            var location = {lat: 5.551091,lng: -0.196310};
+            var map = new google.maps.Map(
+                document.getElementById('map'),
+                {
+                    zoom: 4,
+                    center: location
+                }
+            );
+        //    AIzaSyCTQfCN756myglGhDJaebpNtNskUcBy5rU
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Qa5BNLSUsmZ59VaEFg4rJq4GDv96l-I&callback=initMap"></script>
     <script src="static/jquery-3.5.1.min.js"></script>
     <script src="static/bootstrap.bundle.min.js"></script>
     <script src="static/index.js"></script>
