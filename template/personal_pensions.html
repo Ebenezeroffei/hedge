@@ -12,6 +12,14 @@
             user-select: none;
             position: relative;
         }
+        /* Scrollbar */
+        ::-webkit-scrollbar{
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: #f2a507;
+            border-radius: 5px;
+        }
         /* Navbar Section */
         nav{
             box-shadow: 0px 2px 5px rgba(0,0,0,.5);
@@ -62,7 +70,7 @@
         nav ul li.dropdown:hover > ul{
             opacity: 1;
             visibility: visible;
-            top: 60px;
+            top: 59px;
         }
         /* Special Nav Items */
         .special-nav-item::after{
@@ -99,7 +107,15 @@
         nav ul li.dropdown ul li{
             width: 140%;
             display: block;
+            transition: all .1s ease-in-out;
+            border-bottom: thin solid rgba(0,0,0,.125);
         }
+/*
+        nav ul li.dropdown ul li:hover > a{
+            background: #f2a507;
+            color: white;
+        }
+*/
         nav ul li.dropdown ul li a{
             padding: 10px 0px;
             line-height: 15px;
@@ -160,8 +176,8 @@
         }
         /* Slider for smaller screens */
         #slider{
-            position: absolute;
-            z-index:1;
+            position: fixed;
+            z-index:2;
             top: 79px;
             right: 1500px;
             background: rgba(0,0,0,.5);
@@ -224,6 +240,31 @@
             text-align: center;
         }
         
+        /* Move to top */
+        #move-to-top{
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            z-index: 2;
+            border-radius: 50%;
+            background: rgba(245,162,7,1);
+            left: 20px;
+            bottom: 40px;
+            border: thin solid white;
+            transition: all .2s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        #move-to-top a{
+            display: block;
+            text-align: center;
+        }
+        #move-to-top a img{
+            margin-top: 12px;
+            width: 30px;
+        }
+        
         /* Footer */
         footer{
             background-color:#535353;
@@ -256,6 +297,13 @@
             margin: 1px 5px;
             border-radius: 10px;
         }
+
+        /* Media Query 0 - 580px */
+        @media only screen and (max-width:580px){
+            #regional-branches #map{
+                height: 500px;
+            }
+        }
         
         /* Media Query from 0px to 1125px */
         @media only screen and (max-width: 1125px){
@@ -265,6 +313,62 @@
             #hamburger{
                 opacity: 1;
                 visibility: visible;
+            }
+        }
+        
+        /* Media Query from 0px to 550px */
+        @media only screen and (max-width: 550px){
+            #customer-service{
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+        
+        /* Media Query from 0px to 400px */
+        @media only screen and (max-width: 400px){
+            /* Navbar */
+            #navbar-container nav img{
+                width: 60px;
+            }
+            /* Hamburger */
+            #hamburger{
+                top:16px;
+/*                background: red;*/
+                width: 30px;
+                height: 20px;
+            }
+            #hamburger p{
+                top: 12px;
+                left: 3px;
+            }
+            #hamburger p, #hamburger p::before, #hamburger p::after{
+                width: 25px;
+                height: 3px;
+            }
+            #hambuger p::before{
+                top: 5px;
+            }
+            #hamburger p::after{
+                top: -5px;
+            }
+            /* Slider */
+            #slider{
+                top: 48px;
+            }
+            
+            /* Scrollbar */
+            ::-webkit-scrollbar{
+                width: 6px;
+            }
+            
+            /* Move to top */
+            #move-to-top{
+                width: 40px;
+                height: 40px;
+            }
+            #move-to-top a img{
+                margin-top: 6px;
+                width: 20px;
             }
         }
     </style>
@@ -277,7 +381,7 @@
        <div id="alternate-close"></div>
        <div id="slider-menu-container">
            <ul>
-               <li><a href="">Home</a></li>
+               <li><a href="index.html">Home</a></li>
                <li class="slider-dropdown">
                    <span>What We Do  <code>&#11206;</code></span>
                    <ul>
@@ -309,6 +413,7 @@
                     <span>About Us <code>&#11206;</code></span>
                     <ul>
                         <li><a href="who_we_are.html">Who We Are</a></li>
+                        <li><a href="our_board.html">Our Board</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                     </ul>
                 </li>
@@ -326,7 +431,7 @@
                 <img src="static\images\logo.png" alt="">
                 <!-- Main Menu -->
                 <ul>
-                    <li class="special-nav-item" ><a href="">Home</a></li>
+                    <li class="special-nav-item" ><a href="index.html">Home</a></li>
                     <li class="dropdown">
                         <span>What We Do  &#11206;</span>
                         <!-- Submenu -->
@@ -359,6 +464,7 @@
                         <span>About Us  &#11206;</span>
                         <ul class="submenu">
                             <li><a href="who_we_are.html">Who We Are</a></li>
+                            <li><a href="our_board.html">Our Board</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                         </ul>
                     </li>
@@ -399,6 +505,7 @@
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="who_we_are.html">Who We Are</a></li>
+                                    <li><a href="our_board.html">Our Board</a></li>
                                     <li><a href="regional_branches.html">Regional Branches</a></li>
                                     <li><a href="contacts.html">Contact</a></li>
                                     <li><a href="static/docs/Online_Portal_Guide.pdf">Help</a></li>
@@ -439,7 +546,13 @@
             </footer>
         </div>
     </div>
+    <!-- Move to the top section of the page -->
+    <div id="move-to-top">
+        <a href="#container">
+            <img width="30px" src="static/images/up-arrow.png" alt="Up Arrow">
+        </a>
+    </div>
     <script src="static/jquery-3.5.1.min.js"></script>
-    <script src="static/bootstrap.bundle.min.js"></script>
+    <script src="static/index.js"></script>
 </body>
 </html>

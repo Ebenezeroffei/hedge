@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>Hedge Pensions Trust</title>
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            user-select: none;
+            position: relative;
+        }
+        /* Scrollbar */
+        ::-webkit-scrollbar{
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: #f2a507;
+            border-radius: 5px;
+        }
+        /* Navbar Section */
+        nav{
+            box-shadow: 0px 2px 5px rgba(0,0,0,.5);
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            align-items: end;
+        }
+        /* Nav brand */
+        nav img{
+            width:100px;
+            height: auto;
+            padding: 5px;
+        }
+        /* Nav Items */
+        nav ul{
+            list-style: none;
+            margin: auto auto auto 20px;
+            justify-content: end;
+            position: relative;
+            top: 10px;
+            
+        }
+        nav ul li{
+            display: inline-block;
+            margin: auto;
+            max-width: 180px;
+            min-width: 100px;
+        }
+        nav ul li a, nav ul li span{
+            display: block;
+/*            background: lime;*/
+            padding:16px;
+            color: #535353;
+            text-align: center;
+        }
+        nav ul li a:hover, nav ul li span:hover{
+            text-decoration:none;
+            color: #f5a207;
+        }
+        nav ul li.dropdown{
+            position: relative;
+        }
+        nav ul li.dropdown:hover{
+            border-radius: 5px 5px 0px 0px;
+            border: thin solid rgba(0,0,0,.125);
+            border-bottom: none;
+        }
+        nav ul li.dropdown:hover > ul{
+            opacity: 1;
+            visibility: visible;
+            top: 59px;
+        }
+        /* Special Nav Items */
+        .special-nav-item::after{
+            display: block;
+            content: '';
+            transition: all 0.2s ease;
+            width: 0%;
+            height: 4px;
+            background: #f5a207;
+            border-radius: 10px;
+            position: relative;
+            left: 50%;
+        }
+        .special-nav-item:hover::after{
+            width: 100%;
+            left: 0px;
+        }
+        /* Submenus */
+        .submenu{
+            margin: auto;
+            padding: 0px;
+            opacity:0;
+            visibility: hidden;
+            position: absolute;
+            z-index: 1;
+            transition: all .2s ease-in-out;
+            top: 80px;
+            border: thin solid rgba(0,0,0,.125);
+            border-top: none;
+            border-radius: 0px 0px 5px 5px;
+            width: 180%;
+            background: white;
+        }
+        nav ul li.dropdown ul li{
+            width: 140%;
+            display: block;
+            transition: all .1s ease-in-out;
+            border-bottom: thin solid rgba(0,0,0,.125);
+        }
+/*
+        nav ul li.dropdown ul li:hover > a{
+            background: #f2a507;
+            color: white;
+        }
+*/
+        nav ul li.dropdown ul li a{
+            padding: 10px 0px;
+            line-height: 15px;
+            border-bottom: thin solid rgba(0,0,0,.125);
+        }
+        nav ul li.dropdown ul li a:last-child{
+            border: none;
+        }
+        /* Hamburger menu */
+        #hamburger{
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            cursor: pointer;
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+            visibility: hidden;
+            opacity: 0;
+            transition: all .2s ease-in-out;
+        }
+        #hamburger p{
+            width: 40px;
+            height: 5px;
+            background: #f5a207;
+            border-radius: 10px;
+            position: absolute;
+            left: 5px;
+            top: 10px;
+            transition: all .1s ease-in-out;
+        }
+        #hamburger p::after, #hamburger p::before{
+            display: block;
+            content: '';
+            width: 40px;
+            height: 5px;
+            top: -10px;
+            background: #f5a207;
+            position: absolute;
+            transition: all .2s ease-in-out;
+            border-radius: 10px;
+
+        }
+        #hamburger p:after{
+            top: 10px;
+        }
+        #hamburger #burger-row{
+            background: transparent;
+            box-shadow: 0px 2px 5px transparent;
+        }
+        #hamburger #burger-row::after{
+            top: 0px;
+            transform: rotate(45deg);
+        }
+        #hamburger #burger-row::before{
+            top: 0px;
+            transform: rotate(135deg);
+        }
+        /* Slider for smaller screens */
+        #slider{
+            position: fixed;
+            z-index:2;
+            top: 79px;
+            right: 1500px;
+            background: rgba(0,0,0,.5);
+            width: 100vw;
+            height: calc(100vh - 79px);
+            transition: all .2s ease-in-out;
+            display: grid;
+            grid-template-columns: 1fr 200px;
+        }
+        /* Alternate Close */
+        #alternate-close{
+            width: 100%;
+            height: calc(100vh - 79px);
+            background: transparent;
+        }
+        /* Slider Menu Container */
+        #slider #slider-menu-container{
+            background: white;
+            height: 100%;
+            overflow-y: scroll;
+        } 
+        /* Slider Menu */
+        #slider #slider-menu-container ul{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+        /* Slider Menu Items */
+        #slider #slider-menu-container ul li a,#slider #slider-menu-container ul li span{
+            display: block;
+            padding: 10px 5px;
+            color: #535353;
+            border-bottom: thin solid rgba(0,0,0,.125);
+            font-size: 15px;
+            
+        }
+        #slider #slider-menu-container ul li span code{
+            float: right;
+            color: #535353;
+        }
+        #slider #slider-menu-container ul li span:hover > code{
+            color: #f5a207;
+        }
+        #slider #slider-menu-container ul li a:hover,#slider #slider-menu-container ul li span:hover{
+            color: #f5a207;
+            text-decoration: none;
+        }
+        #slider #slider-menu-container ul li{
+            height: 43px;
+            overflow: hidden;
+            transition: all .2s ease-in-out;
+        }
+        /* Slider Submenu */
+        #slider #slider-menu-container ul li ul{
+            background: rgba(0,0,0,.125);
+        }
+        /* Slider Submenu Items */
+        #slider #slider-menu-container ul li ul li{
+            height: auto;
+            text-align: center;
+        }
+        
+        /* Move to top */
+        #move-to-top{
+            width: 60px;
+            height: 60px;
+            position: fixed;
+            z-index: 2;
+            border-radius: 50%;
+            background: rgba(245,162,7,1);
+            left: 20px;
+            bottom: 40px;
+            border: thin solid white;
+            transition: all .2s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        #move-to-top a{
+            display: block;
+            text-align: center;
+        }
+        #move-to-top a img{
+            margin-top: 12px;
+            width: 30px;
+        }
+        
+        /* Footer */
+        footer{
+            background-color:#535353;
+        }
+        footer img{
+            margin-top: 10px;
+            max-width: 100px;
+        }
+        footer ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        footer ul li{
+            text-align: center;
+            padding: 5px;
+        }
+        footer ul li a{
+            color: white;
+        }
+        footer ul li a:hover{
+            color: white;
+        }
+        footer p{
+            margin: auto;
+        }
+        footer hr{
+            background: white;
+            border: thin solid white;
+            margin: 1px 5px;
+            border-radius: 10px;
+        }
+        
+        /* Media Query 0 - 580px */
+        @media only screen and (max-width:580px){
+            #regional-branches #map{
+                height: 500px;
+            }
+        }
+        
+        /* Media Query from 0px to 1125px */
+        @media only screen and (max-width: 1125px){
+            nav ul{
+                display: none;
+            }
+            #hamburger{
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        /* Media Query from 0px to 550px */
+        @media only screen and (max-width: 550px){
+            #customer-service{
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+        
+        /* Media Query from 0px to 400px */
+        @media only screen and (max-width: 400px){
+            /* Navbar */
+            #navbar-container nav img{
+                width: 60px;
+            }
+            /* Hamburger */
+            #hamburger{
+                top:16px;
+/*                background: red;*/
+                width: 30px;
+                height: 20px;
+            }
+            #hamburger p{
+                top: 12px;
+                left: 3px;
+            }
+            #hamburger p, #hamburger p::before, #hamburger p::after{
+                width: 25px;
+                height: 3px;
+            }
+            #hambuger p::before{
+                top: 5px;
+            }
+            #hamburger p::after{
+                top: -5px;
+            }
+            /* Slider */
+            #slider{
+                top: 48px;
+            }
+            
+            /* Scrollbar */
+            ::-webkit-scrollbar{
+                width: 6px;
+            }
+            
+            /* Move to top */
+            #move-to-top{
+                width: 40px;
+                height: 40px;
+            }
+            #move-to-top a img{
+                margin-top: 6px;
+                width: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Hamburger Menu -->
+   <div id="hamburger"><p></p></div>
+   <!-- Side menu for smaller screens -->
+   <div id="slider">
+       <div id="alternate-close"></div>
+       <div id="slider-menu-container">
+           <ul>
+               <li><a href="index.html">Home</a></li>
+               <li class="slider-dropdown">
+                   <span>What We Do  <code>&#11206;</code></span>
+                   <ul>
+                       <li><a href="provident_fund_management.html">Provident Fund Management</a></li>
+                       <li><a href="administrative_services.html">Administrative Services</a></li>
+                       <li><a href="investment_returns.html">Investment Returns</a></li>
+                       <li><a href="retirement_planning.html">Retirement Planning</a></li>
+                       <li><a href="personal_pensions.html">Personal Pensions</a></li>
+                       <li><a href="corperate_pensions.html">Corperate Pensions</a></li>
+                   </ul>
+                </li>
+                <li class="slider-dropdown">
+                    <span>Portal <code>&#11206;</code></span>
+                    <ul>
+                        <li><a href="">Member Portal</a></li>
+                        <li><a href="">Employer Portal</a></li>
+                    </ul>
+                </li>
+                <li class="slider-dropdown">
+                    <span>Download <code>&#11206;</code></span>
+                    <ul>
+                        <li><a href="static/docs/claim%20_form.pdf">Claim Form</a></li>
+                        <li><a href="static/docs/Survivors_Claim_Form.pdf">Survivor's Claim Form</a></li>
+                        <li><a href="static/docs/TIER_2_HEDGE_PENSIONS_ENROLLMENT_FORM.pdf">Tier 2 Enrollement Form</a></li>
+                        <li><a href="static/docs/TIER_3_HEDGE_PENSION_ENROLLMENT_FORM.pdf">Tier 3 Enrollement Form</a></li>
+                    </ul>
+                </li>
+                <li class="slider-dropdown">
+                    <span>About Us <code>&#11206;</code></span>
+                    <ul>
+                        <li><a href="who_we_are.html">Who We Are</a></li>
+                        <li><a href="our_board.html">Our Board</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacts.html">Contact Us</a></li>
+                <li><a href="regional_branches.html">Regional Branches</a></li>
+                <li><a href="static/docs/Online_Portal_Guide.pdf">Help</a></li>
+           </ul>
+       </div>
+   </div>
+    <div id="container">
+        <div id="navbar-container">
+           <!-- Nav bar -->
+            <nav>
+               <!-- Nav Image -->
+                <img src="static\images\logo.png" alt="">
+                <!-- Main Menu -->
+                <ul>
+                    <li class="special-nav-item" ><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <span>What We Do  &#11206;</span>
+                        <!-- Submenu -->
+                        <ul class="submenu">
+                            <li><a href="provident_fund_management.html">Provident Fund Management</a></li>
+                            <li><a href="administrative_services.html">Administrative Services</a></li>
+                            <li><a href="investment_returns.html">Investment Returns</a></li>
+                            <li><a href="retirement_planning.html">Retirement Planning</a></li>
+                            <li><a href="personal_pensions.html">Personal Pensions</a></li>
+                            <li><a href="corperate_pensions.html">Corperate Pensions Pensions</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <span>Portal  &#11206;</span>
+                        <ul class="submenu">
+                            <li><a href="">Member Portal</a></li>
+                            <li><a href="">Employer Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class = 'dropdown' >
+                        <span>Download  &#11206;</span>
+                        <ul class="submenu">
+                            <li><a href="static/docs/claim%20_form.pdf">Claim Form</a></li>
+                            <li><a href="static/docs/Survivors_Claim_Form.pdf">Survivors Claim Form</a></li>
+                            <li><a href="static/docs/TIER_2_HEDGE_PENSIONS_ENROLLMENT_FORM.pdf">Tier 2 Enrollement Form</a></li>
+                            <li><a href="static/docs/TIER_3_HEDGE_PENSION_ENROLLMENT_FORM.pdf">Tier 3 Enrollement Form</a></li>
+                        </ul>
+                    </li>
+                    <li class = 'dropdown' >
+                        <span>About Us  &#11206;</span>
+                        <ul class="submenu">
+                            <li><a href="who_we_are.html">Who We Are</a></li>
+                            <li><a href="our_board.html">Our Board</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="special-nav-item" ><a href="contacts.html">Contact</a></li>
+                    <li class="special-nav-item" ><a href="regional_branches.html">Regional Branches</a></li>
+                    <li class="special-nav-item" ><a href="static/docs/Online_Portal_Guide.pdf">Help</a></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Who We Are -->
+        <div class="container mt-5">
+           <h3 class="text-center" style="font-family: cursive;color: #f5a207;">Who We Are</h3><hr style="background: #f5a207;"/>
+            <div class="row mb-5">
+                <div class="col-12 col-md-6 d-flex align-items-center">
+                    <img class="card-img-top" src="static/images/who_we_are.png" alt="">
+                </div>
+                <div class="col-12 col-md-6">
+                    <p class="mb-0">
+                        The Hedge Pensions Trust (HPT) sees its main challenge as establishing a well-crafted Information and Communication infrastructure platform to the required effective and efficient services to its customers. On this basis HPT expects to generate high earnings from its operations and investments to ensure the possibility of providing attractive retirement income for its customers. In pursuit of this noble corporate policy HPT will endeavor to deploy appropriate and state- of –the art Information and Communication Technology (ICT) applications, among other things
+                    </p>
+                </div>
+            </div>
+            <p>
+                The trust therefore expects to offer significant differentiation with regard to our operations and services compared to our competitors in the fund management industry in Ghana. Consequently the HPT intends to develop and apply the requisite policies, strategies and programmes that will bring about sustained improvement and expansion in the service delivery of the Trust.This challenge makes it imperative for HPT to set up a reliable Management Information System that will be powered by a very good ICT platform for overall dissemination of organizational goals, programs and other related activities. The additional dimension expected from the application of ICT is to add value to the work performance and output of the staff of HPT. These in broad terms describe the demands that will drive the ICT strategic decisions and choices that HPT will adapt to ensure steady and enhanced performance culture.
+            </p>
+            <!-- Mission and Vision -->
+            <div class="row mb-3">
+               <!-- Mission -->
+                <div class="col-sm-6">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="static/images/vision_22.png" alt="Mission">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Mission Of Hedge Pensions Trust</h4>
+                            <p class="card-text text-muted">
+                                Hedge Pensions Trust exists to provide adequate and dignified retirement package to each member through safe, prudent and strategic investment policies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vision -->
+                <div class="col-sm-6 mt-sm-0 mt-3">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="static/images/mission.png" alt="Vision">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Vision Of Hedge Pensions Trust</h4>
+                            <p class="card-text text-muted">
+                                To achieve operational excellence, superior financial performance, first class customer satisfaction and secured pension income.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                In performing its functions the Hedge Pensions Trust will partner with National Pensions Regulatory Authority (NPRA), office of the head of Civil Service, Controller and Accountant Generals Department (CAGD) and other relevant institutions in the fund management industry in Ghana.
+            </p>
+        </div>
+        <!-- Footer -->
+        <div id="footer">
+            <footer>
+                <div class="row no-gutters text-light">
+                   <!-- Footer Image -->
+                    <div class="col-12 col-sm-3 text-center">
+                        <img src="static/images/logo.png" alt="">
+                        <h5 class="mt-2">Hedge Pensions Trust<br/>CLOGSAG Building<br/>Ministries Accra<br/>+233 302 666 581</h5>
+                    </div>
+                    <div class="col-12 col-sm-9">
+                        <div class="row no-gutters">
+                            <div class="col-sm-4 col-lg-3 mt-sm-0 mt-4">
+                                <p class="lead text-center">Welcome</p><hr/>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="who_we_are.html">Who We Are</a></li>
+                                    <li><a href="our_board.html">Our Board</a></li>
+                                    <li><a href="regional_branches.html">Regional Branches</a></li>
+                                    <li><a href="contacts.html">Contact</a></li>
+                                    <li><a href="static/docs/Online_Portal_Guide.pdf">Help</a></li>
+                                    <li><a href="faq.html">FAQ</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-4 col-lg-3 mt-sm-0 mt-4">
+                                <p class="lead text-center">What We Do</p><hr/>
+                                <ul>
+                                    <li><a href="provident_fund_management.html">Provident Fund Management</a></li>
+                                    <li><a href="administrative_services.html">Administrative Services</a></li>
+                                    <li><a href="investment_returns.html">Investment Returns</a></li>
+                                    <li><a href="retirement_planning.html">Retirement Planning</a></li>
+                                    <li><a href="personal_pensions.html">Personal Pensions</a></li>
+                                    <li><a href="corperate_pensions.html">Corperate Pensions</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-4 col-lg-3 mt-sm-0 mt-4">
+                                <p class="text-center lead">Portal</p><hr/>
+                                <ul>
+                                    <li><a href="">Membership Portal</a></li>
+                                    <li><a href="">Employee Portal</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 col-lg-3 mt-sm-4 mt-lg-0 mt-4">
+                                <p class="lead text-center">Download</p><hr/>
+                                <ul>
+                                    <li><a href="static/docs/claim%20_form.pdf">Claim Form</a></li>
+                                    <li><a href="static/docs/Survivors_Claim_Form.pdf">Survivor's Claim Form</a></li>
+                                    <li><a href="static/docs/TIER_2_HEDGE_PENSIONS_ENROLLMENT_FORM.pdf">Tier 2 Enrollment Form</a></li>
+                                    <li><a href="static/docs/TIER_3_HEDGE_PENSION_ENROLLMENT_FORM.pdf">Tier 3 Enrollment Form</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><hr/>
+                <p class="text-light text-center p-2">Copyright &copy;2020 Hedge Pensions Trust</p>
+            </footer>
+        </div>
+    </div>
+    <!-- Move to the top section of the page -->
+    <div id="move-to-top">
+        <a href="#container">
+            <img width="30px" src="static/images/up-arrow.png" alt="Up Arrow">
+        </a>
+    </div>
+    <script src="static/jquery-3.5.1.min.js"></script>
+    <script src="static/bootstrap.bundle.min.js"></script>
+    <script src="static/index.js"></script>
+</body>
+</html>
